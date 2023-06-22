@@ -4,12 +4,12 @@ import Logo from "../Imagens/Logo.png";
 
 let API_key = "&api_key=f46d41d831c89384bd13152986afb3f3";
 let base_url = "https://api.themoviedb.org/3/";
-let language = "es"; // Establecer el idioma en español
 let url = base_url + "/discover/movie?sort_by=popularity.desc" + API_key;
-let arr = ["En Cartelera", "Popular", "Taquilleras", "Estrenos 2023", "Infantil", "Drama", "Comedia" , "Acción" , "Aventura" , "Romance"];
+let arr = ["En Cartelera", "Popular", "Taquilleras", "Estrenos 2023", "Infantil", "Drama", "Comedia" , "Acción" , "Aventura" , "Romance", "Terror"];
 
 const Main = () => {
-  const [movieData, setData] = useState([]);
+
+  const [movieData, setData] = useState([]); 
   const [url_set, setUrl] = useState(url);
   const [search, setSearch] = useState();
 
@@ -22,7 +22,7 @@ const Main = () => {
   }, [url_set]);
 
   const getData = (movieType) => {
-    
+
     if (movieType === "Popular") {
       url = base_url + "/discover/movie?sort_by=popularity.desc" + API_key;
     }
@@ -115,6 +115,12 @@ const Main = () => {
     }
 
    
+    if (movieType === "Terror") {
+      url =
+        base_url +
+        "/discover/movie?with_genres=27&primary_release_year=2023" +
+        API_key;
+    }
     
     
     
